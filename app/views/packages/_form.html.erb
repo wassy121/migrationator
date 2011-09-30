@@ -1,4 +1,4 @@
-<%= form_for(@package) do |f| %>
+<%= form_for [@user, @server, @package] do |f| %>
   <% if @package.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :pkgtype %><br />
+    <%= f.select(:pkgtype, ["rpm", "deb", "gem"]) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

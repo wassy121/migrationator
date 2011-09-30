@@ -1,7 +1,7 @@
 class CreatePackages < ActiveRecord::Migration
   def self.up
     create_table :packages do |t|
-      t.string :type
+      t.string :pkgtype
       t.string :name
       t.string :version
 
