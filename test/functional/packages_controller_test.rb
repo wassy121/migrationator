@@ -32,7 +32,7 @@ class PackagesControllerTest < ActionController::TestCase
   
   test "users shouldn't be able to add packages to other servers" do
     post :create, :package => FactoryGirl.create(:package), :server_id => @server2.to_param
-    assert_response :fail
+    assert_redirected_to user_url(assigns(:user))
   end
 
   test "should show package" do

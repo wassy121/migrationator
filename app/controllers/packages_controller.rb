@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_server
 
   # GET /servers/2/packages
   def index
@@ -60,4 +61,18 @@ class PackagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  protected
+    def find_server
+      if params[:server_id]
+        @server = Server.find(params[:server_id])
+        @user = @server.user
+      else
+        @package = Package.find(params[:id])
+        @user = @package.server.user
+      end
+      unless current_user == @user
+        redirect_to @user, :alert => 'Permission error!'
+      end
+    end
 end
