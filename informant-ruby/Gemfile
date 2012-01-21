@@ -1,0 +1,9 @@
+source 'http://rubygems.org'
+
+gem 'facter'
+gem 'json'
+gem 'logger'
+
+group :development do
+  gem "warbler"
+end

@@ -1,0 +1,4 @@
+*.jar
+log/*.log
+.bundle
+.rbenv-version

@@ -1,0 +1,6 @@
+#!/usr/bin/env jruby
+
+require 'informant'
+
+me = Informant.new
+me.gather_facts
