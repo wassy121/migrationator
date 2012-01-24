@@ -50,7 +50,7 @@ class Informant
 
   def gather_dpkg_files
     @log.info "Starting dpkg search"
-    require debian
+    require 'debian'
   end
 
   def gather_rpm_files
