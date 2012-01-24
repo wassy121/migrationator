@@ -1,19 +1,20 @@
-# SQLite version 3.x
-#   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
   database: migrationator_dev
-  user: root
-  password: 'TihHnw3D6'
+  user: m11r_devuser
+  password: 'kindaSecret'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  development
+  adapter: mysql
+  database: migrationator_test
+  user: root
+  password: 'superSecret'
 
 production:
   adapter: mysql
   database: migrationator
   user: m11r_dbuser
-  password: 'Idh2&2Xj'
+  password: 'lessSecret'
