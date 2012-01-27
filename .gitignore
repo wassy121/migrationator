@@ -1,3 +1,4 @@
+.project
 .bundle
 **/*.swp
 db/*.sqlite3

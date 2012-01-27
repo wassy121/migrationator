@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :pkgtype %><br />
-    <%= f.select(:pkgtype, ["rpm", "deb", "gem"]) %>
+    <%= f.select(:pkgtype, SUPPORTED_PACKAGETYPES) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
