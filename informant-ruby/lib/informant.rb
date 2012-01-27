@@ -13,6 +13,7 @@ class Informant
     @log.level = Logger::DEBUG
     @dpkg_files = []
     @rpm_files = []
+    @unpackaged_files = []
   end
 
   def gather_facts
@@ -20,12 +21,18 @@ class Informant
       puts mgr
       self.send(:"gather_#{mgr}_files")
     end
+    @log.info "Found #{@dpkg_files.count} dpkg files"
+    @log.info "Found #{@rpm_files.count} rpm files"
+    all_files = gather_all_files()
+    @unpackaged_files = all_files -= @dpkg_files -= @rpm_files
+    @log.info "Found #{@unpackaged_files.count} unpackaged files"
+    @log.info "All files counted were #{all_files.count}"
     #gather_dpkg_files()
     #gather_rpm_files()
     #gather_unpackaged_files(pkg_managers)
   end
 
-  def gather_unpackaged_files
+  def gather_all_files
     mutex = Mutex.new
     found_files = []
 
@@ -42,19 +49,17 @@ class Informant
       end
       thr.join
     end
-
-    found_files -= @dpkg_files
-    found_files -= @rpm_files
     return found_files
   end
 
   def gather_dpkg_files
     @log.info "Starting dpkg search"
-    require 'debian'
+    require 'facts/dpkg'
   end
 
   def gather_rpm_files
     @log.info "Starting rpm search"
+    require 'facts/rpm'
   end
 
   def determine_pkg_managers()
