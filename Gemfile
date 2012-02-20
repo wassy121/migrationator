@@ -8,8 +8,11 @@ gem 'rails', '3.0.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise', '1.3.4'
 gem 'mysql', '2.8.1'
-gem 'factory_girl_rails'
-
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'vlad'
+  gem 'vlad-git'
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 
