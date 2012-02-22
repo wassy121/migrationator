@@ -1,7 +1,7 @@
 development:
   adapter: mysql
   database: migrationator_dev
-  user: m11r_devuser
+  username: m11r_devuser
   password: 'kindaSecret'
 
 # Warning: The database defined as "test" will be erased and
@@ -10,11 +10,11 @@ development:
 test:
   adapter: mysql
   database: migrationator_test
-  user: root
+  username: root
   password: 'superSecret'
 
 production:
   adapter: mysql
   database: migrationator
-  user: m11r_dbuser
+  username: m11r_dbuser
   password: 'lessSecret'
