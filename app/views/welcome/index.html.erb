@@ -1,4 +1,16 @@
-<h1>Hello!</h1>
+<div class="welcome-top">
+    <div class="main-header">Migrationator</div>
+    <div class="login-box" style="float:right;clear:none;">
+        <input type="text" />
+    </div>        
+</div>
+
+<div class="content" style="margin:0 auto;text-align:center">
+    Migrationator  
+</div>
+
+
+
 <% unless user_signed_in? -%>
   <p> <%= link_to 'Sign up', new_user_registration_path %></p>
   <p> <%= link_to 'Sign in', new_user_session_path %></p> 
