@@ -1,3 +1,7 @@
 .alert {
-  color:red;
+    color:red;
+}
+
+div.welcome-top {
+    text-align: center;
 }
