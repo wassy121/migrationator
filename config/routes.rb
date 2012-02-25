@@ -1,7 +1,6 @@
 Migrationator::Application.routes.draw do
 
   match "profile" => "users#show"
-  devise_for :users
 
   resources :users
   resources :servers do
@@ -58,15 +57,9 @@ Migrationator::Application.routes.draw do
   devise_for :users do 
     get '/register' => 'devise/registrations#new'
     get '/login' => 'devise/sessions#new'
+    get '/logout' => 'devise/sessions#destroy'
   end 
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+  # Route root to welcome page
   root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end
