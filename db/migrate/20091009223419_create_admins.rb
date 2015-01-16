@@ -1,7 +1,10 @@
 class CreateAdmins < ActiveRecord::Migration
   def self.up
     create_table :admins do |t|
-      t.database_authenticatable
+      ## Database authenticatable
+      t.string :email,              :null => false, :default => ""
+      t.string :encrypted_password, :null => false, :default => ""
+
       t.timestamps
     end
   end
