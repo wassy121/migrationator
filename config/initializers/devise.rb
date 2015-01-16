@@ -9,6 +9,6 @@ Devise.setup do |config|
   config.reconfirmable = true
   config.expire_all_remember_me_on_sign_out = true
   config.password_length = 8..128
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
   config.reset_password_within = 2.hours
 end
