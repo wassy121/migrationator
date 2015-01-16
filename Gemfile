@@ -3,8 +3,13 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'devise'
 gem 'mysql'
-group :development, :test do
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+
+group :development do
   gem 'factory_girl_rails'
-  gem 'vlad'
-  gem 'vlad-git'
+end
+group :test do
+  gem 'sqlite3'
 end

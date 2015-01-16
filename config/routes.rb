@@ -1,6 +1,6 @@
-Migrationator::Application.routes.draw do
+Rails.application.routes.draw do
 
-  match "profile" => "users#show"
+  match "profile" => "users#show", :via => [:get], :as => 'user_show'
 
   resources :users
 
