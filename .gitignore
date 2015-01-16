@@ -5,4 +5,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
+config/secrets.yml
 doc/app
+bin/
+public/assets/
