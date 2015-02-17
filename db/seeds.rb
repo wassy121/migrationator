@@ -6,5 +6,8 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 user = User.create(:email => 'user@test.com',:password => 'secret')
-Admin.create(:email => 'admin@test.com',:password => 'secret')
-Server.create(:name => 'test', :ip => '192.168.1.1', :user => user )
+user.save
+admin = Admin.create(:email => 'admin@test.com',:password => 'secret')
+admin.save
+server = Server.create(:name => 'test', :ip => '192.168.1.1', :user => user )
+server.save

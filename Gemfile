@@ -8,6 +8,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 
 group :development do
+  gem 'pry'
   gem 'factory_girl_rails'
 end
 group :test do

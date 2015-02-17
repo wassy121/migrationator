@@ -7,7 +7,7 @@ class Package < ActiveRecord::Base
   belongs_to :server
   
   validates :name, :pkgversion, :architecture, :presence => true  
-  
+
   def long_name
     [:name, :pkgversion, :architecture].join()
   end

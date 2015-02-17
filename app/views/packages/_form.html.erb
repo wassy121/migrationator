@@ -13,15 +13,19 @@
 
   <div class="field">
     <%= f.label :pkgtype %><br />
-    <%= f.select(:pkgtype, SUPPORTED_PACKAGETYPES) %>
+    <%= f.select(:pkgtype, Package::SUPPORTED_PACKAGETYPES) %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :architecture %><br />
+    <%= f.text_field :architecture %>
+  </div>
+  <div class="field">
     <%= f.label :version %><br />
-    <%= f.text_field :version %>
+    <%= f.text_field :pkgversion %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -22,13 +22,14 @@ class PackagesController < ApplicationController
 
   # GET /servers/2/packages/3/edit
   def edit
+    binding.pry()
     @server = Server.find(params[:server_id])
     @package = Package.find(params[:id])
   end
 
   # POST /servers/2/packages
   def create
-    @package = Package.new(params[:package])
+    @package = Package.new(package_params)
     @package.server = Server.find(params[:server_id])
 
     if @package.save
@@ -63,16 +64,24 @@ class PackagesController < ApplicationController
   end
 
   protected
-    def find_server
-      if params[:server_id]
-        @server = Server.find(params[:server_id])
-        @user = @server.user
-      else
-        @package = Package.find(params[:id])
-        @user = @package.server.user
-      end
-      unless current_user == @user
-        redirect_to @user, :alert => 'Permission error!'
-      end
+  
+  def find_server
+    if params[:server_id]
+      @server = Server.find(params[:server_id])
+      @user = @server.user
+    else
+      @package = Package.find(params[:id])
+      @user = @package.server.user
     end
+    unless current_user == @user
+      redirect_to @user, :alert => 'Permission error!'
+    end
+  end
+
+  private
+
+  def package_params
+    params.require(:package).permit(:pkgtype, :name, :architecture, :pkgversion)
+  end
+
 end
