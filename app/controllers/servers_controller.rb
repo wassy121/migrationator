@@ -24,7 +24,7 @@ class ServersController < ApplicationController
 
   # POST /servers
   def create
-    @server = @user.servers.new(params[:server])
+    @server = @user.servers.new(server_params)
     if @server.save
       flash[:notice] = "Server was successfully created"
       redirect_to server_url(@server)
@@ -37,7 +37,7 @@ class ServersController < ApplicationController
   def update
     @server = @user.servers.find(params[:id])
 
-    if @server.update_attributes(params[:server])
+    if @server.update_attributes(server_params)
       flash[:notice] = "Server was successfully updated"
       redirect_to server_url(@server)
     else
@@ -57,15 +57,22 @@ class ServersController < ApplicationController
   end
 
   protected
-    def find_user
-      if params[:user_id]
-        @user = User.find(params[:user_id])
-      else
-        @server = Server.find(params[:id])
-        @user = @server.user
-      end
-      unless current_user == @user
-        redirect_to @user, :alert => "Permission error!"
-      end
+
+  def find_user
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @server = Server.find(params[:id])
+      @user = @server.user
     end
+    unless current_user == @user
+      redirect_to @user, :alert => "Permission error!"
+    end
+  end
+
+  private
+
+  def server_params
+    params.require(:server).permit(:name, :ip)
+  end
 end

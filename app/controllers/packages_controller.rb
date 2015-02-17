@@ -22,7 +22,6 @@ class PackagesController < ApplicationController
 
   # GET /servers/2/packages/3/edit
   def edit
-    binding.pry()
     @server = Server.find(params[:server_id])
     @package = Package.find(params[:id])
   end
@@ -44,7 +43,7 @@ class PackagesController < ApplicationController
   def update
     @package = Package.find(params[:id])
     @server = Server.find(params[:server_id])
-    if @package.update_attributes(params[:package])
+    if @package.update_attributes(package_params)
       flash[:notice] = 'Package was successfully updated.'
       redirect_to server_url(@server)
     else
